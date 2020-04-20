@@ -50,13 +50,13 @@ void setup() {
 void loop() {
   if( Serial.available() ) {
     val = Serial.read();
-    System_Run(val);
+    system_run(val);
   }
   
-  delay(1);                    
+  delay(1);
 }
 
-void System_Run(int variable) {
+void system_run(int variable) {
   if ( variable == '0' )	{					
     // Turn off system
     digitalWrite(led, LOW);
