@@ -2,11 +2,11 @@
 
 ## Getting Started
 
-This is a Arduino code for project name "[Development of low cost upper and lower extremities rehabilitation system with interactive feedback for children with movement disorders](https://ieeexplore.ieee.org/document/7843556/)", which capable of communicating with Android tablet that install [HandCycleApp](https://github.com/jerrychong25/HandCycleApp).
+This is a Arduino code for project name "[Development of low cost upper and lower extremities rehabilitation system with interactive feedback for children with movement disorders](https://ieeexplore.ieee.org/document/7843556/)", which capable of communicating with Android tablet that install [hand cycle mobile app](https://github.com/ieeemysight4rehab/hand-cycle-android).
 
 ## Deployment
 
-Tested on Arduino board.
+Tested on Arduino Uno board.
 
 ## Built With
 
