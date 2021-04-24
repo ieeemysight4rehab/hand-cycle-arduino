@@ -29,16 +29,17 @@
    POSSIBILITY OF SUCH DAMAGE. 
 */
 
-char val;				    // Value recieved via bluetooth
-int direc1 = 4;			// Pin 4 - Direction of Motor 1
-#define pwm1 5			// Pin 5 - Motor 1 Speed
-int direc2 = 8;			// Pin 8 - Direction of Motor 2
-#define pwm2 9			// Pin 9 - Motor 2 Speed
-#define motor3 10		// Pin 10 - Motor 3 Speed 
-int led = 12;			  // Pin 12 - System LED 
+char val;         // Value recieved via bluetooth
+int direc1 = 4;   // Pin 4 - Direction of Motor 1
+#define pwm1 5    // Pin 5 - Motor 1 Speed
+int direc2 = 8;   // Pin 8 - Direction of Motor 2
+#define pwm2 9    // Pin 9 - Motor 2 Speed
+#define motor3 10 // Pin 10 - Motor 3 Speed
+int led = 12;     // Pin 12 - System LED
 
-void setup() {
-  pinMode(led, OUTPUT);  
+void setup()
+{
+  pinMode(led, OUTPUT);
   pinMode(pwm1, OUTPUT);
   pinMode(direc1, OUTPUT);
   pinMode(pwm2, OUTPUT);
@@ -47,127 +48,157 @@ void setup() {
   Serial.begin(9600);
 }
 
-void loop() {
-  if( Serial.available() ) {
+void loop()
+{
+  if (Serial.available())
+  {
     val = Serial.read();
     system_run(val);
   }
-  
+
   delay(1);
 }
 
-void system_run(int variable) {
-  if ( variable == '0' )	{					
+void system_run(int variable)
+{
+  if (variable == '0')
+  {
     // Turn off system
     digitalWrite(led, LOW);
-    analogWrite (pwm1, 0);
+    analogWrite(pwm1, 0);
     digitalWrite(direc1, LOW);
-    analogWrite (pwm2, 0);
+    analogWrite(pwm2, 0);
     digitalWrite(direc2, LOW);
-    analogWrite (motor3, 0);
+    analogWrite(motor3, 0);
     Serial.print("SYSTEM OFF");
-  } else if( variable == 'A' ) {
-    // Motor 1 - Clockwise with highest speed 
+  }
+  else if (variable == 'A')
+  {
+    // Motor 1 - Clockwise with highest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 0);
     analogWrite(pwm1, 127);
-    Serial.print ("MOTOR 1 - CLOCKWISE HIGHEST SPEED");
+    Serial.print("MOTOR 1 - CLOCKWISE HIGHEST SPEED");
     delay(1);
-  } else if( variable == 'B' ) {
+  }
+  else if (variable == 'B')
+  {
     // Motor 1 - Clockwise with medium speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 0);
     analogWrite(pwm1, 64);
-    Serial.print ("MOTOR 1 - CLOCKWISE MEDIUM SPEED");
+    Serial.print("MOTOR 1 - CLOCKWISE MEDIUM SPEED");
     delay(1);
-  } else if( variable == 'C' ) { 
+  }
+  else if (variable == 'C')
+  {
     // Motor 1 - Clockwise with lowest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 0);
     analogWrite(pwm1, 33);
-    Serial.print ("MOTOR 1 - CLOCKWISE LOWEST SPEED");    
+    Serial.print("MOTOR 1 - CLOCKWISE LOWEST SPEED");
     delay(1);
-  } else if( variable == 'D' ) {
+  }
+  else if (variable == 'D')
+  {
     // Motor 1 - Anti-clockwise with highest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 1);
     analogWrite(pwm1, 127);
-    Serial.print ("MOTOR 1 - ANTI-CLOCKWISE HIGHEST SPEED");
+    Serial.print("MOTOR 1 - ANTI-CLOCKWISE HIGHEST SPEED");
     delay(1);
-  } else if( variable == 'E' ) {
+  }
+  else if (variable == 'E')
+  {
     // Motor 1 - Anti-clockwise with medium speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 1);
     analogWrite(pwm1, 64);
-    Serial.print ("MOTOR 1 - ANTI-CLOCKWISE MEDIUM SPEED");
+    Serial.print("MOTOR 1 - ANTI-CLOCKWISE MEDIUM SPEED");
     delay(1);
-  } else if( variable == 'F' ) {
+  }
+  else if (variable == 'F')
+  {
     // Motor 1 - Anti-clockwise with lowest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc1, 1);
     analogWrite(pwm1, 33);
-    Serial.print ("MOTOR 1 - ANTI-CLOCKWISE LOWEST SPEED");
+    Serial.print("MOTOR 1 - ANTI-CLOCKWISE LOWEST SPEED");
     delay(1);
-  } else if( variable == 'G' ) {
-    // Motor 2 - Clockwise with highest speed 
+  }
+  else if (variable == 'G')
+  {
+    // Motor 2 - Clockwise with highest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 0);
     analogWrite(pwm2, 127);
-    Serial.print ("MOTOR 2 - CLOCKWISE HIGHEST SPEED");
+    Serial.print("MOTOR 2 - CLOCKWISE HIGHEST SPEED");
     delay(1);
-  } else if( variable == 'H' ) {
+  }
+  else if (variable == 'H')
+  {
     // Motor 2 - Clockwise with medium speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 0);
     analogWrite(pwm2, 64);
-    Serial.print ("MOTOR 2 - CLOCKWISE MEDIUM SPEED");
+    Serial.print("MOTOR 2 - CLOCKWISE MEDIUM SPEED");
     delay(1);
-  } else if( variable == 'I' ) {
+  }
+  else if (variable == 'I')
+  {
     // Motor 2 - Clockwise with lowest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 0);
     analogWrite(pwm2, 33);
-    Serial.print ("MOTOR 2 - CLOCKWISE LOWEST SPEED");
+    Serial.print("MOTOR 2 - CLOCKWISE LOWEST SPEED");
     delay(1);
-  } else if( variable == 'J' ) {
-    // Motor 2 - Anti-clockwise with highest speed 
+  }
+  else if (variable == 'J')
+  {
+    // Motor 2 - Anti-clockwise with highest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 1);
     analogWrite(pwm2, 127);
-    Serial.print ("MOTOR 2 - ANTI-CLOCKWISE HIGHEST SPEED");
+    Serial.print("MOTOR 2 - ANTI-CLOCKWISE HIGHEST SPEED");
     delay(1);
-  } else if( variable == 'K' ) {
+  }
+  else if (variable == 'K')
+  {
     // Motor 2 - Anti-clockwise with medium speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 1);
     analogWrite(pwm2, 64);
-    Serial.print ("MOTOR 2 - ANTI-CLOCKWISE MEDIUM SPEED");
+    Serial.print("MOTOR 2 - ANTI-CLOCKWISE MEDIUM SPEED");
     delay(1);
-  } else if( variable == 'L' ) {
+  }
+  else if (variable == 'L')
+  {
     // Motor 2 - Anti-clockwise with lowest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     digitalWrite(direc2, 1);
     analogWrite(pwm2, 33);
-    Serial.print ("MOTOR 2 - ANTI-CLOCKWISE LOWEST SPEED");
+    Serial.print("MOTOR 2 - ANTI-CLOCKWISE LOWEST SPEED");
     delay(1);
-  } else if( variable == 'M' ) {
+  }
+  else if (variable == 'M')
+  {
     // Motor 3 - Highest speed
     digitalWrite(led, HIGH);
-    Serial.print ("SYSTEM ON");
+    Serial.print("SYSTEM ON");
     analogWrite(motor3, 90);
-    Serial.print ("MOTOR 3 - HIGHEST SPEED");
+    Serial.print("MOTOR 3 - HIGHEST SPEED");
     delay(1);
-  } 
+  }
 }
